@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Navbar = () => {
+const Navbar = ({ setCategory }) => {
   return (
     <nav
       className="navbar navbar-expand-lg bg-body-tertiary"
       data-bs-theme="dark"
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Navbar
+        <a className="navbar-brand cursor-pointer">
+          <span className="badge text-bg-warning fs-4"> NEWS</span>
         </a>
         <button
           className="navbar-toggler"
@@ -23,26 +23,36 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Features
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Pricing
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" aria-disabled="true">
-                Disabled
-              </a>
-            </li>
+            <div
+              onClick={() => setCategory('business')}
+              className="nav-item cursor-pointer"
+            >
+              <a className="nav-link cursor-pointer">Business</a>
+            </div>
+            <div
+              onClick={() => setCategory('sports')}
+              className="nav-item cursor-pointer"
+            >
+              <a className="nav-link">Sports</a>
+            </div>
+            <div
+              onClick={() => setCategory('entertainment')}
+              className="nav-item cursor-pointer"
+            >
+              <a className="nav-link ">Entertainment</a>
+            </div>
+            <div
+              onClick={() => setCategory('technology')}
+              className="nav-item cursor-pointer"
+            >
+              <a className="nav-link ">Technology</a>
+            </div>
+            <div
+              onClick={() => setCategory('health')}
+              className="nav-item cursor-pointer"
+            >
+              <a className="nav-link ">Health</a>
+            </div>
           </ul>
         </div>
       </div>
