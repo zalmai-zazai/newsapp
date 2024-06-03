@@ -5,15 +5,23 @@ const NewsBoard = ({ category }) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    const newsResponse = async () => {
-      let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${
-        import.meta.env.VITE_API_KEY
-      }`;
-      const response = await fetch(url);
-      const data = await response.json();
-      setArticles(data.articles);
+    const fetchArticles = async () => {
+      try {
+        const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${
+          import.meta.env.VITE_API_KEY // Ensure that VITE_API_KEY is correctly set in your environment variables
+        }`;
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setArticles(data.articles);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      }
     };
-    newsResponse();
+
+    fetchArticles();
   }, [category]);
 
   return (
